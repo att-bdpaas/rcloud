@@ -5,3 +5,5 @@ applications:
   instances: 1
   buildpack: https://github.com/weymanf/heroku-buildpack-r.git
   command: ./scripts/cf-run.sh $PORT
+  services:
+  - p-redis-rcloud

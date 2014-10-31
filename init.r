@@ -16,4 +16,5 @@ Sys.setenv( "PKG_CXXFLAGS" = paste( Sys.getenv("PKG_CXXFLAGS"), "-I /app/vendor/
 ########################
 print("Installing RCloud")
 system2("./scripts/bootstrapR.sh")
+install.packages("packages/rediscc/rediscc_0.1-3.tar.gz")
 rcloud.support:::check.installation()
