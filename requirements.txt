@@ -1,0 +1,4 @@
+ipython
+ansi2html
+pyzmq
+matplotlib

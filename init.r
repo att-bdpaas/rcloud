@@ -31,4 +31,10 @@ for (package in packages) {
     devtools::install(package, dependencies = TRUE, quiet = TRUE)
 }
 
+Sys.setenv( "PKG_CPPFLAGS" = paste(paste0("-I", getwd(), "/.heroku/python/include/python2.7"), Sys.getenv("PKG_CPPFLAGS")))
+Sys.setenv( "PKG_LIBS" = paste(paste0("-L", getwd() ,"/.heroku/python/lib"), "-ldl -lpython2.7", Sys.getenv("PKG_LIBS")))
+Sys.setenv( "LD_LIBRARY_PATH" = paste0(Sys.getenv("LD_LIBRARY_PATH"), ":", getwd(), "/.heroku/python/lib" ))
+
+
+install.packages("rpython2", quiet=FALSE)
 rcloud.support:::check.installation() # prevent the same command in conf/run_rcloud.R from slowing down the startup by pre-processing it

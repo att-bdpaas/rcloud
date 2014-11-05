@@ -3,5 +3,5 @@ applications:
 - name: rcloud
   memory: 1G
   instances: 1
-  buildpack: https://github.com/weymanf/heroku-buildpack-r.git
+  buildpack: https://github.com/att-bdpaas/heroku-buildpack-multi#submodule_init
   command: ./scripts/cf-run.sh $PORT
