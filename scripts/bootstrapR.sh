@@ -92,17 +92,18 @@ print(stage2)
 download.packages(stage2, '$DISTREP/src/contrib', , c('file://$RCREPO', 'http://rforge.net', 'http://r.research.att.com'), type = 'source')
 tools:::write_PACKAGES('$DISTREP/src/contrib')
 EOF
+
+        # Create a local copy of mathjax library in htdocs
+        MATHJAX_INSTALL_DIR=mathjax
+        if [ ! -e "${WD}/htdocs/$MATHJAX_INSTALL_DIR" ]; then
+            mkdir -p "${WD}/htdocs/$MATHJAX_INSTALL_DIR"
+            echo 'Downloading MathJax'
+            curl -L https://codeload.github.com/mathjax/MathJax/legacy.tar.gz/master | tar -xz -C "${WD}/htdocs/$MATHJAX_INSTALL_DIR" --strip-components=1
+        fi
+
         echo ''
         echo " Distributon packages created in $DISTREP"
         exit 0
-    fi
-
-    # Create a local copy of mathjax library in htdocs
-    MATHJAX_INSTALL_DIR=mathjax
-    if [ ! -e "${WD}/htdocs/$MATHJAX_INSTALL_DIR" ]; then
-        mkdir -p "${WD}/htdocs/$MATHJAX_INSTALL_DIR"
-        echo 'Downloading MathJax'
-        curl -L https://codeload.github.com/mathjax/MathJax/legacy.tar.gz/master | tar -xz -C "${WD}/htdocs/$MATHJAX_INSTALL_DIR" --strip-components=1
     fi
 else
     ## Installation from a distribution
