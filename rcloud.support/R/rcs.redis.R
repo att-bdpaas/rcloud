@@ -9,7 +9,7 @@ rcs.redis <- function(host=NULL, password=NULL) {
     port <- 6379L
   }
   connection = redis.connect(host, port, 3, TRUE, TRUE)
-  if(!is.null(password)) redis.authenticate(connection, password)
+  if(!is.null(password)) redis.auth(connection, password)
 
   structure(list(host=host, port=port, handle=connection), class="RCSredis")
 }
